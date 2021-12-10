@@ -1,0 +1,418 @@
+:root
+{
+    --rich-black-fogra-29: #131b23;
+}
+
+*, *::before, *::after
+{ box-sizing: border-box }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+div.container
+{
+    display: grid;
+    grid-template-areas:
+        "nav nav"
+        "main main"
+        "footer footer"
+        "footer-copyr footer-copyr"
+    ;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: max-content 1fr repeat(2, max-content);
+    min-width: 100vw;
+    min-height: 100vh;
+    font-family: sans-serif;
+    color: var(--rich-black-fogra-29);
+}
+
+nav
+{
+    grid-area: nav;
+    display: flex;
+    flex-flow: row nowrap;
+    place-items: center;
+    place-content: center;
+    padding: 4vh 4vw;
+    background: purple;
+}
+
+nav > a
+{
+    text-decoration: none;
+    font-size: 19pt;
+    font-weight: 600;
+    margin: 1vh 4vw;
+    color: #eff1f2;
+    letter-spacing: 0.94px;
+    transition: 0.3s ease-in-out;
+}
+
+nav > a:hover
+{
+    color: rgba(180, 180, 180, 0.8);
+}
+
+main
+{
+    grid-area: main;
+    background: rgba(225, 225, 225, 0.93);
+    padding: 20px;
+    display: flex;
+    flex-flow: column nowrap;
+    place-items: center;
+    place-content: center;
+    text-align: center;
+}
+
+main > h1
+{ font-size: 30pt }
+
+main > h3
+{
+    font-size: 18pt;
+    letter-spacing: 0.6px;
+    font-weight: 500;
+}
+
+main > p
+{
+    font-size: 16pt;
+    letter-spacing: 1px;
+    color: rgba(100, 100, 100, 0.9);
+    text-shadow: 0 0 1px var(--rich-black-fogra-29);
+}
+
+a[my_profile]
+{
+    text-decoration: none;
+    font-size: 14pt;
+    padding: 2vh 4vw;
+    color: rgba(225, 225, 225, 0.93);
+    background: purple;
+    border-radius: 26px;
+    box-shadow: 0 3px 1.15px var(--rich-black-fogra-29);
+    transition: .2s ease;
+}
+
+a[my_profile]:hover
+{ opacity: 0.87 }
+
+a[my_profile]:active
+{
+    transition: all 10ms linear;
+    opacity: 1.0;
+    transform: translate(0, 3px);
+    box-shadow: 0 0px 0.025px var(--rich-black-fogra-29);
+}
+
+footer
+{
+    grid-area: footer;
+    display: flex;
+    justify-items: center;
+    place-items: center;
+    place-content: center;
+}
+
+footer > a
+{
+    display: flex;
+    flex-flow: column nowrap;
+    place-items: center;
+    place-content: center;
+    padding: 2vh 2vw;
+    text-decoration: none;
+    color: rgba(40, 40, 40, 0.8);
+    font-weight: 600;
+    letter-spacing: 0.675px;
+    transition: 0.4s ease-in-out;
+}
+
+footer > a > img
+{
+    display: block;
+    max-width: 5vw;
+    max-height: 5vh;
+    margin-bottom: 2vh;
+    transition: 0.8s ease-in-out;
+}
+
+footer > a:hover
+{
+    color: var(--rich-black-fogra-29);
+}
+
+footer > a:hover img
+{
+    /* transform: translate(0, -3px); */
+    animation: animate-footer-img-link 0.6s ease-in-out 0s infinite alternate;
+}
+
+@keyframes animate-footer-img-link
+{
+    to
+    { transform: translate(0, -3px) }
+}
+
+footer + div.footer-copyright
+{
+    grid-area: footer-copyr;
+    display: flex;
+    place-items: center;
+    place-content: center;
+    padding: 20px;
+    background: rgba(180, 180, 180, 0.8);
+    color: rgba(100, 100, 100, 0.9);
+    font-size: 13pt;
+    font-weight: 600;
+}
+
+/* Product Page Styling */
+h1[product_header]
+{
+    display: block;
+    font-size: 24pt;
+    color: rgba(255, 255, 255, 0.98);
+    padding: 8px;
+    max-width: 82vw;
+    width: 100%;
+    background-color: purple;
+    border-radius: 60px;
+    text-shadow: 0 0 4px black;
+}
+
+div.card-wrapper
+{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    row-gap: 20px;
+}
+
+div.card
+{
+    box-shadow: 0 0 1px black;
+    background: rgba(255, 255, 255, 0.98);
+    padding: 0 6px 6px 6px;
+    display: grid;
+    grid-template-columns: minmax(200px, 280px);
+    justify-items: center;
+    justify-content: center;
+}
+
+[card_img]
+{
+    display: block;
+    max-width: 280px;
+    max-height: 340px;
+    width: 100%;
+    height: auto;
+}
+
+[card_desc]
+{
+    font-weight: 600;
+    font-size: 18pt;
+}
+
+[card_price]
+{
+    display: flex;
+    align-items: center;
+    font-size: 12pt;
+}
+
+[price_tag]
+{
+    display: block;
+    max-width: 30px;
+    max-height: 30px;
+    margin: 5px;
+}
+
+[card_buy]
+{
+    justify-self: stretch;
+    align-self: flex-end;
+    text-decoration: none;
+    background: purple;
+    color: rgba(170, 170, 170, 0.9);
+    padding: 10px;
+    transition: 0.5s ease-in-out;
+}
+
+[card_buy]:hover
+{
+    color: rgba(255, 255, 255, 0.98);
+}
+
+/* Payment page styling */
+div.card-wrapper.payment-card-wrapper
+{
+    padding: 12px 8px;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    justify-items: center;
+}
+
+div.payment-card
+{
+    background: purple;
+    padding: 2.45vh 3.25vw;
+    box-shadow: 0 0 10px black;
+    display: flex;
+    flex-flow: column nowrap;
+    place-content: center;
+    place-items: center;
+    max-width: 50vw;
+    width: max-content;
+    color: rgba(255, 255, 255, 0.98);
+}
+
+form#payment-form
+{
+    display: flex;
+    flex-flow: column nowrap;
+    place-content: center;
+    place-items: center;
+    max-width: 48vw;
+    width: 100%;
+}
+
+[red_]
+{ color: red }
+
+div.input-group
+{
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 12px;
+    align-items: flex-start;
+    width: 100%;
+}
+
+div.input-group > input
+{
+    margin-top: 2px;
+    padding: 4px;
+    box-shadow: 0 0 1px black;
+    outline: none;
+    border: none;
+    width: 100%;
+    transition: 0.3s ease;
+}
+
+div.input-group > input:focus
+{
+    outline: none;
+    font-family: monospace;
+    box-shadow: 0 0 18px rgba(225, 225, 225, 0.93);
+}
+
+[placeholder]
+{
+    text-align: center;
+}
+
+[msg_desc]
+{
+    max-width: 56vw;
+    max-height: 42vh;
+    width: 100%;
+    height: 100%;
+    min-width: 38vw;
+    min-height: 20vh;
+    margin-top: 2px;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 1px black;
+    padding: 6px;
+    text-align: center;
+}
+
+[msg_desc]::-webkit-scrollbar
+{ display: none }
+
+[msg_desc]:focus
+{
+    outline: none;
+    font-family: monospace;
+    box-shadow: 0 0 18px rgba(225, 225, 225, 0.93);
+}
+
+a[back_btn]
+{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.98);
+    padding: 15px;
+    background: purple;
+    margin: 18px auto;
+    transition: 0.4s ease-in-out;
+    border-radius: 3px;
+    box-shadow: 0 1px 7px black;
+}
+
+a[back_btn]:hover
+{
+    color: rgba(100, 100, 100, 0.9);
+}
+
+button[order_]
+{
+    background: rgba(255, 255, 255, 0.98);
+    border: none;
+    outline: none;
+    padding: 20px 60px;
+    transition: 0.4s linear;
+}
+
+button[order_]:hover
+{
+    cursor: pointer;
+    background: rgba(160, 160, 160, 0.8);
+    color: rgba(255, 255, 255, 0.98);
+}
+
+div.payment-warning
+{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    padding: 1.9vh 3vw;
+    background: purple;
+    box-shadow: 0 0 10px black;
+    color: rgba(255, 255, 255, 0.98);
+    max-width: 45vw;
+}
+
+div.payment-gateway
+{
+    display: flex;
+    flex-flow: row wrap;
+    place-items: center;
+    justify-content: space-around;
+    gap: 4px;
+    min-height: max-content;
+    width: 100%;
+    background: rgba(230, 230, 230, 1.0);
+    padding: 4px 6px;
+    border-radius: 3px;
+}
+
+div.payment-gateway > img
+{
+    display: block;
+    max-width: 120px;
+    max-height: 100px;
+    min-width: 20px;
+    min-height: 16px;
+    margin: 0;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 1px black);
+}
